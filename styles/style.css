@@ -1,0 +1,93 @@
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+body {
+  background-color: #444;
+}
+
+.logo {
+  display: inline;
+  border-radius: 25px;
+  width: 50px;
+  height: 50px;
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex: 0;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.nav {
+  background-color: #2f2f2f;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex: auto;
+}
+
+.right button,
+.left button {
+  display: inline;
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100px;
+  height: 100%;
+}
+.left ul {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.left li {
+  display: inline;
+}
+
+.right button:hover,
+.left button:hover {
+  background-color: #666;
+}
+.card{
+    gap:20px;
+    background-color: #666;
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    margin: auto 10% ;
+    justify-content: center;
+    align-items: center;
+}
