@@ -1,3 +1,4 @@
+
 html {
   box-sizing: border-box;
   margin: 0;
@@ -11,34 +12,18 @@ html {
 *::before {
   box-sizing: inherit;
 }
+
+
 body {
   background-color: #444;
-}
-
-.logo {
-  display: inline;
-  border-radius: 25px;
-  width: 50px;
-  height: 50px;
-  padding: 0px;
   margin: 0px;
-  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.left,
-.right {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  flex: 0;
-}
 .container {
   display: flex;
   flex-direction: column;
-  flex: auto;
-  gap: 20px;
+  gap:20px;
   width: 100%;
   height: 100%;
 }
@@ -46,51 +31,125 @@ body {
 .nav {
   background-color: #2f2f2f;
   display: flex;
-  flex-direction: row;
-  gap: 20px;
-  padding: 10px;
+  padding: 15px 20px;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  flex: auto;
+  z-index: 10;
 }
 
-.right button,
-.left button {
-  display: inline;
-  background-color: #444;
+.logo img{
+  border-radius: 25px;
+  width: 50px;
+  height: auto;
+}
+
+.nav ul{
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+.nav li a{
   color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  width: 100px;
-  height: 100%;
-}
-.left ul {
-  display: flex;
-  gap: 20px;
-  list-style-type: none;
-  padding: 0;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: 2px solid #190a3c;
+  border-radius: 10px;
 }
 
-.left li {
-  display: inline;
+.nav li a:hover{
+  color: #f1c40f;
+  background-color: #666;
+  transition: 200ms;
 }
 
-.right button:hover,
-.left button:hover {
-  background-color: #666;
-}
-.card {
-  gap: 20px;
-  background-color: #666;
+.hero{
   display: flex;
-  flex-direction: row;
-  flex: auto;
+  background: url('../images/pizza-banner.jfif') no-repeat center;
+  background-size: cover;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 70vh;
 }
+.card {
+  background-color: rgba(0, 0, 0, .5);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  padding: 30px 100px;
+  max-width: 80%;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card h1{
+  margin-top: 25px;
+}
+.card p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.btn{
+  display:inline-block;
+  background-color: #f1c40f;
+  color: #2f2f2f;
+  padding: 20px 40px;
+  margin-top: 20px;
+  border-radius: 40px;
+  text-decoration: none;
+  
+}
+
+.btn:hover{
+  background-color: #e67e22;
+  transition: 250ms;
+}
+
+#cardapio{
+  padding: 50px;
+  text-align: center;
+  background-color: #333;
+  color: white;
+}
+
+.menu-opcoes{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+}
+
+.item{
+  background-color: #444;
+  padding: 20px;
+  border-radius:10px;
+  text-align: center;
+  width: 250px;
+  transition: 500ms;
+ 
+}
+
+.item:hover{
+  cursor: pointer;
+  font-size: 1.1rem;
+ 
+}
+.item:hover img{
+
+  transform: scale(1.05);
+}
+
+.item img{
+  width: 100%;
+  border-radius: 10px;
+  transition: 500ms;
+
+}
+
 footer{
     background-color: #190a3c;
     padding: 20px;
