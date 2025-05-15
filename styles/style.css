@@ -3,27 +3,30 @@ html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
+  scroll-behavior: smooth;
 }
-
 *,
 *::after,
 *::before {
   box-sizing: inherit;
 }
-
+.hidden {
+  display: none !important;
+}
 
 body {
   background-color: #444;
-  margin: 0px;
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  padding-top: 80px; 
+  padding-bottom: 60px; 
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  gap:20px;
+  gap: 10px;
   width: 100%;
   height: 100%;
 }
@@ -34,21 +37,24 @@ body {
   padding: 15px 20px;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
   z-index: 10;
 }
 
-.logo img{
+.logo img {
   border-radius: 25px;
   width: 50px;
   height: auto;
 }
 
-.nav ul{
+.nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
 }
-.nav li a{
+.nav li a {
   color: white;
   font-weight: bold;
   padding: 10px 20px;
@@ -56,103 +62,206 @@ body {
   border: 2px solid #190a3c;
   border-radius: 10px;
 }
-
-.nav li a:hover{
+.nav li a:hover {
   color: #f1c40f;
   background-color: #666;
   transition: 200ms;
 }
 
-.hero{
+.hero {
   display: flex;
   background: url('../images/pizza-banner.jfif') no-repeat center;
   background-size: cover;
   justify-content: center;
   align-items: center;
   height: 70vh;
-}
-.card {
-  background-color: rgba(0, 0, 0, .5);
-  color: white;
   text-align: center;
+}
+
+.card {
+  background-color: rgba(19, 15, 15, 0.6);
+  padding: 20px;
   border-radius: 10px;
-  padding: 30px 100px;
   max-width: 80%;
 }
-
-.card img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.card h1{
-  margin-top: 25px;
+.card h1 {
+  margin-top: 10px;
 }
 .card p {
   margin-top: 10px;
   font-size: 1.2rem;
 }
-
-.btn{
-  display:inline-block;
+.btn {
+  display: inline-block;
   background-color: #f1c40f;
   color: #2f2f2f;
-  padding: 20px 40px;
+  padding: 15px 30px;
   margin-top: 20px;
   border-radius: 40px;
   text-decoration: none;
-  
 }
-
-.btn:hover{
+.btn:hover {
   background-color: #e67e22;
   transition: 250ms;
 }
 
-#cardapio{
-  padding: 50px;
+#cardapio {
+  padding: 50px 20px;
   text-align: center;
-  background-color: #333;
+  background-color: #463f3f;
   color: white;
 }
-
-.menu-opcoes{
-  display:flex;
+.menu-opcoes {
+  display: flex;
   flex-wrap: wrap;
   gap: 50px;
   justify-content: center;
 }
-
-.item{
-  background-color: #444;
+.item {
+  background-color: #472929;
   padding: 20px;
-  border-radius:10px;
+  border-radius: 10px;
   text-align: center;
   width: 250px;
-  transition: 500ms;
- 
+  transition: 300ms;
 }
-
-.item:hover{
+.item:hover {
   cursor: pointer;
-  font-size: 1.1rem;
- 
+  font-size: 1.05rem;
 }
-.item:hover img{
-
+.item:hover img {
   transform: scale(1.05);
 }
-
-.item img{
+.item img {
   width: 100%;
   border-radius: 10px;
-  transition: 500ms;
-
+  transition: 300ms;
 }
 
-footer{
-    background-color: #190a3c;
-    padding: 20px;
-    color: #feef;
-    text-align: center;
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #2f2f2f;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* ================== ADM ================== */
+#adm {
+  padding: 30px;
+  background-color: #2f2f2f;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  text-align: center;
+}
+
+#adm #menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#adm #menu button {
+  background-color: #f1c40f;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #2f2f2f;
+  transition: 300ms;
+}
+
+#adm #menu button:hover {
+  background-color: #e67e22;
+  color: white;
+}
+
+/* ================== Forms ================== */
+#adicionar, #alterar, #lista {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #2f2f2f;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+#adicionar h2,
+#alterar h2,
+#lista h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+}
+
+.alterarForm {
+  margin-top: 20px;
+}
+
+/* ================== Botões ================== */
+button {
+  background-color: #f1c40f;
+  color: #2f2f2f;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 300ms;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #e67e22;
+  color: white;
+}
+
+/* ================== Tabela ================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #333;
+  color: #f1c40f;
+}
+
+td {
+  background-color: #555;
+}
+
+
+section, #adm, #adicionar, #alterar, #lista {
+  margin-top: 80px;
 }
