@@ -20,6 +20,8 @@
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#contato">Contato</a></li>
           <li><a href="#adm">Adm</a></li>
+          <li><a href="login.html">Entrar</a></li>
+          <li><a href="#">Cadastrar-Se</a></li>
         </ul>
       </div>
 
@@ -85,21 +87,15 @@
       <div id="adm" class="hidden">
         <div id="menu">
           <button onclick="mostrarSecao('adicionar')">
-            <i class=
-              >Adicionar pizza</i
-            >
+            <i>Adicionar pizza</i>
           </button>
           <button onclick="mostrarSecao('alterar')">
-            <i 
-            
-              >Alterar pizza</i
-            >
+            <i >Alterar pizza</i>
           </button>
           <button onclick="mostrarSecao('lista')">
-            <i 
-              >Lista de pizzas</i
-            >
+            <i >Lista de pizzas</i>
           </button>
+          <button ></button>
         </div>
       </div>
 
@@ -113,6 +109,10 @@
         <div class="form">
           <label for="preco">Preço:</label>
           <input type="text" id="preco" />
+        </div>
+        <div class="form">
+          <label for="ingredientes">Ingredientes:</label>
+          <input type="text" id="ingredientes" />
         </div>
 
         <button onclick="adicionarPizza()">Adicionar pizza</button>
@@ -132,6 +132,7 @@
             <tr>
               <th>Sabor</th>
               <th>Preço</th>
+              <th>Ingredientes</th>
             </tr>
           </thead>
           <tbody id="listaPizzas"></tbody>
@@ -156,6 +157,10 @@
           <div class="form">
             <label for="novoPreco">Novo Preço: </label>
             <input placeholder="Digite o novo preço" id="novoPreco" />
+          </div>
+          <div class="form">
+            <label for="novoIngrediente">Novo Ingrediente: </label>
+            <input placeholder="Digite o novo ingrediente" id="novoIngrediente" />
           </div>
           <button onclick="alterarPizza()">Alterar pizza</button>
         </div>

@@ -9,31 +9,40 @@ function mostrarSecao(secao){
     document.getElementById(secao).classList.remove("hidden");
 
 }
+function adicionarPizza() {
+    const sabor = document.getElementById("sabor").value;
+    const preco = parseFloat(document.getElementById("preco").value.replace(",", "."));
+    const ingredientes = document.getElementById("ingredientes").value
+        .split(/[,;:.]/) // Divide a string por qualquer vírgula, ponto e vírgula, dois pontos ou ponto
+        .map(e => e.trim()) // Remove espaços extras de cada ingrediente
+        .filter(e => e !== ''); // Remove elementos vazios
 
-function adicionarPizza(){
-    const sabor = document.getElementById("sabor").value
-    const preco = parseFloat(document.getElementById("preco").value.replace(",", "."))
-    // Verifica se o preço é um valor numerico valido
-    if(isNaN(preco)){   
-        alert("Insira um preço valido.")
-        return
+    // Verifica se o preço é um valor numérico válido
+    if (isNaN(preco)) {
+        alert("Insira um preço válido.");
+        return;
     }
-    // verifica se os campos foram preenchidos
-    if(sabor && preco){
-        alert(`${sabor} com preço R$${preco.toFixed(2)} cadastrado com sucesso`)
-        pizzas.push({sabor, preco})
-        // Guarda a lista no armazenamento local, para poder ser usado em outras páginas
-        document.getElementById("sabor").value = ""
-        document.getElementById("preco").value = ""
-        atualizarLista()
-    }else{
-        alert("Por favor, preencha todos os campos.")
+
+    // Verifica se os campos foram preenchidos
+    if (sabor && preco && ingredientes.length > 0) {
+        alert(`Pizza de ${sabor} com preço R$${preco.toFixed(2)} cadastrada com sucesso.`);
+        alert(`Ingredientes: ${ingredientes.join(", ")}`); // Exibe ingredientes como uma lista formatada
+        pizzas.push({ sabor, preco, ingredientes });
+        
+        //W.I.P Guarda a lista no armazenamento local, para poder ser usado em outras páginas
+
+        //
+        document.getElementById("sabor").value = "";
+        document.getElementById("preco").value = "";
+        document.getElementById("ingredientes").value = "";
+        atualizarLista(); // Atualiza a lista de pizzas na página
+    } else {
+        alert("Por favor, preencha todos os campos.");
     }
-    
 }
 
+
 function buscarPizza(){
-    console.log("oi")
     const busca = document.getElementById("busca").value.toLowerCase();
     console.log(busca)
     const resultados = pizzas.filter(pizza => pizza.sabor.toLowerCase().includes(busca));
@@ -52,6 +61,7 @@ function buscarPizzaParaAlterar(){
     if(pizzaAlterar){
         document.getElementById("novoSabor").value = pizzaAlterar.sabor;
         document.getElementById("novoPreco").value = pizzaAlterar.preco;
+        document.getElementById("novoIngrediente").value = pizzaAlterar.ingredientes
     } else {
         alert("Pizza não encontrada");
     }
@@ -62,14 +72,19 @@ function alterarPizza(){
     if (pizzaAlterar){
         const novoSabor = document.getElementById("novoSabor").value;
         const novoPreco = parseFloat(document.getElementById("novoPreco").value.replace(",", "."));
+        const novoIngrediente = document.getElementById("novoIngrediente").value
+        .split(/[,;:]/) // Divide a string por qualquer vírgula, ponto e vírgula ou dois pontos
+        .map(e => e.trim()) // Remove espaços extras de cada ingrediente
+        .filter(e => e !== '');;
         console.log(novoPreco   )
         if(isNaN(novoPreco)){
             alert("Informe um preço valido")
             return;
         }
-        if(novoSabor && novoPreco){
+        if(novoSabor && novoPreco && novoIngrediente){
             pizzaAlterar.sabor = novoSabor
             pizzaAlterar.preco = novoPreco
+            pizzaAlterar.ingredientes = novoIngrediente
 
             atualizarLista();
             alert("Pizza alterada com sucesso")
@@ -89,6 +104,7 @@ function atualizarLista(lista=pizzas){
         linha.innerHTML = `
         <td>${e.sabor}</td>
         <td>R$${parseFloat(e.preco.toFixed(2))}</td>
+        <td>${e.ingredientes}</td>
         `;
         tabela.appendChild(linha);
     });

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./styles/login.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="left">
+            <div class="backButton">
+                <a class="btnVoltar" href="index.html">Voltar a pagina inicial</a>
+            </div>
+            <div class="login-form">
+                <div class="logo">
+                    <img src="./images/logo.png" alt="Logo da pizzaria"><p><strong>Tralalero's Pizza</strong></p>
+                </div>
+                
+                <h2>Entrar</h2>
+                <div class="form-gp">
+                    <label for="usuario">Usuário ou Email</label>
+                    <input type="text" id="usuario" placeholder="Insira seu email ou nome de usuário">
+                </div>
+                <div class="form-gp">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Insira sua senha">
+                </div>
+                <button type="submit" class="loginBtn" onclick="validarLogin()">Entrar</button>
+                 
+               
+            </div>
+            <p id="mensagem"></p>
+
+        </div>
+        <div class="right"></div>
+    </div>
+    <script src="./scripts/login.js"></script>
+</body>
+</html>

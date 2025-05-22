@@ -1,11 +1,20 @@
 window.onload = ()=>{
     const hash = window.location.hash;
-    exibirSecao(hash)
+    if(hash && hash !=="#"){
+        exibirSecao(hash)
+    }else{
+        exibirSecao("#inicio")
+    }
+
 }
 
 window.onhashchange = ()=>{
      const hash = window.location.hash;
-     exibirSecao(hash)
+    if(hash && hash !=="#"){
+        exibirSecao(hash)
+    }else{
+        exibirSecao("#inicio")
+    }
  }
 function exibirSecao(secao){
     document.getElementById("inicio").classList.add("hidden")

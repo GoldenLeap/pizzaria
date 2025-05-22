@@ -1,0 +1,183 @@
+/* Resetando margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definindo a fonte padrão e a cor do fundo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #444; /* Cor de fundo escura para combinar com as outras páginas */
+    display: flex;
+    justify-content: center;
+  align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Botão de Voltar */
+.backButton {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logCad{
+    display:flex;
+    flex: auto;
+    justify-content: space-between;
+}
+
+.btnVoltar {
+    background-color: #f1c40f; /* Cor amarela */
+    color: #2f2f2f; /* Cor escura para o texto */
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btnVoltar:hover {
+    background-color: #e67e22; /* Laranja no hover */
+}
+
+/* Contêiner principal para o layout */
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    height: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #2f2f2f; /* Fundo escuro consistente */
+    border-radius: 10px;
+}
+
+/* Lado esquerdo */
+.left {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white; /* Cor do texto para contraste com o fundo */
+}
+
+/* Estilo do logo */
+.logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+}
+
+.logo p {
+    font-size: 28px;
+    font-weight: bold;
+    color: #f1c40f; /* Cor amarela como nas outras páginas */
+}
+
+/* Estilo do título */
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #f1c40f; /* Usando o tom de amarelo para os títulos */
+}
+
+/* Estilo dos campos de input */
+.form-gp {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    color: #ccc; /* Cor clara para o texto do rótulo */
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #555; /* Borda escura para contraste */
+    border-radius: 5px;
+    outline: none;
+    background-color: #555; /* Cor de fundo do input */
+    color: white; /* Texto branco dentro do campo */
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #f1c40f; /* Amarelo quando em foco */
+}
+
+/* Estilo do botão de login */
+.loginBtn {
+    background-color: #f1c40f; /* Cor de fundo amarela */
+    color: #2f2f2f; /* Cor escura para o texto */
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px; /* Botão mais arredondado */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.loginBtn:hover {
+    background-color: #e67e22; /* Cor laranja no hover */
+}
+
+/* Lado direito (pode ser usado para um fundo ou imagem) */
+.right {
+    flex: 1;
+    background: url('../images/login/background.jfif') no-repeat center center;
+    background-size: cover;
+    border-left: 1px solid #eee;
+    border-radius: 10px 0 0 10px; /* Adicionando bordas arredondadas */
+}
+
+/* Mensagens de sucesso e erro */
+.mensagem {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.sucesso {
+    color: #27ae60; /* Verde para mensagens de sucesso */
+}
+
+.erro {
+    color: red; /* Vermelho para mensagens de erro */
+}
+
+/* Responsividade - Ajusta o layout para telas menores */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left {
+        padding: 20px;
+    }
+
+    .right {
+        border-left: none;
+        border-top: 1px solid #eee;
+    }
+
+    .login-form {
+        width: 100%;
+    }
+}
