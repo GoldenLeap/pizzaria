@@ -155,7 +155,7 @@ input:focus {
 /* ------------------ LADO DIREITO ------------------ */
 .right {
     flex: 1;
-    background: url('../images/login/background.jfif') no-repeat center center;
+    background: url('../images/login/background.png') no-repeat center center;
     background-size: cover;
     border-left: 1px solid #eee;
 }
