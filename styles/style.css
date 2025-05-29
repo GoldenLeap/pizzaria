@@ -270,3 +270,22 @@ td {
 section, #adm, #adicionar, #alterar, #lista {
   margin-top: 80px;
 }
+
+.backButton{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-content: start;
+
+}
+.backButton a{
+      position: fixed;
+    background-color: #f1c40f;
+    color: #2f2f2f;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}

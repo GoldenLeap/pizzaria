@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
 
@@ -19,6 +20,7 @@
                 </div>
                 
                 <h2>Entrar</h2>
+                <p class="register-link">Não possui uma conta? <a href="./cadastro.html">Clique aqui</a> para se cadastrar.</p>
                 <div class="form-gp">
                     <label for="usuario">Usuário ou Email</label>
                     <input type="text" id="usuario" placeholder="Insira seu email ou nome de usuário">
@@ -26,6 +28,9 @@
                 <div class="form-gp">
                     <label for="senha">Senha</label>
                     <input type="password" id="senha" placeholder="Insira sua senha">
+                    <span class="mostrarSenha" onclick="mostrarSenha('senha')">Mostrar</span>
+
+
                 </div>
                 <button type="submit" class="loginBtn" onclick="validarLogin()">Entrar</button>
                  
