@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="./styles/login.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="left">
+            <div class="backButton">
+                <a class="btnVoltar" href="index.html">Voltar a página inicial</a>
+            </div>
+            <div class="register-form">
+                <div class="logo">
+                    <img src="./images/logo.png" alt="Logo da pizzaria"><p><strong>Tralalero's Pizza</strong></p>
+                </div>
+                
+                <h2>Cadastro</h2>
+                
+                <div class="form-gp">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" placeholder="Insira seu nome completo">
+                </div>
+                <div class="form-gp">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" onkeyup="checkMail()" placeholder="Insira seu e-mail">
+                    <p class="hidden erro" id="mailErro"></p>
+                </div>
+                <div class="form-gp">
+                    <label for="usuario">Nome de Usuário</label>
+                    <input type="text" id="usuario" onkeydown="checkUser()" placeholder="Escolha um nome de usuário">
+                    <p class="hidden erro" id="userErro"></p>
+                </div>
+                <div class="form-gp">
+                    <label for="senha">Senha</label>
+                    <input type="password" onkeyup="checkPass()" id="senha" placeholder="Crie uma senha">
+                    <span class="mostrarSenha" onclick="mostrarSenha('senha')">Mostrar</span>
+                </div>
+                <div class="form-gp">
+                    <label for="confirmar-senha">Confirmar Senha</label>
+                    <input type="password" id="confirmarSenha" onkeyup="checkPass()" placeholder="Confirme sua senha">
+                    <span class="mostrarSenha" onclick="mostrarSenha('confirmarSenha')">Mostrar</span>
+                    <p class="hidden erro" id="passErro"></p>
+                </div>
+                
+                <button type="submit" class="registerBtn" onclick="validarCadastro()">Cadastrar</button>
+                
+            </div>
+            <p id="mensagem"></p>
+
+        </div>
+        <div class="right"></div>
+    </div>
+
+    <script src="./scripts/cadastro.js"></script>
+    <script>
+        function mostrarSenha(id) {
+            var input = document.getElementById(id);
+            var tipo = input.type;
+
+            if (tipo === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

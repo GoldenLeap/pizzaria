@@ -104,7 +104,7 @@ body {
   background-color: #e67e22;
   transition: 250ms;
 }
-
+/* Cardapio */
 #cardapio {
   padding: 50px 20px;
   text-align: center;
@@ -112,10 +112,15 @@ body {
   color: white;
 }
 .menu-opcoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  row-gap: 20px;
+}
+.menu-opcoes button{
+  align-self: center;
+  justify-self: center;
+  place-self: center auto;
 }
 .item {
   background-color: #472929;
