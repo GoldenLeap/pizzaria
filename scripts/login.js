@@ -33,6 +33,7 @@ function validarLogin() {
   // Caso usuário seja encontrado e senha correta
   if (uObj && uObj.senha === senha) {
     exibirMensagem("Login realizado com sucesso", "sucesso");
+    document.cookie = `auth=${uObj.usuario} ;SameSite=None ;Secure; `
     setTimeout(() => {
       window.location.href = "./index.html"; // ou outro destino
     }, 1000);
@@ -56,7 +57,7 @@ function validarLogin() {
   }
   if(usuario === usuarioAdm && senha === senhaAdm){
     exibirMensagem("Login realizado com sucesso", "sucesso")
-    document.cookie = "auth=admin; SameSite=None; Secure"
+    document.cookie = "auth=admin ;SameSite=None ;Secure"
     setTimeout(() => {
         window.location.href = "./admin.html";
     }, 1000);

@@ -230,7 +230,7 @@ input:focus {
 .login-link a , .register-link a{
     color: #f39c12; 
     font-weight: bold;
-    text-decoration: none;
+    text-decoration:underline;
     transition: all 0.3s ease;
     display:inline-block;
 }

@@ -13,7 +13,9 @@ html {
 .hidden {
   display: none !important;
 }
-
+a:hover{
+  cursor:pointer;
+}
 body {
   background-color: #444;
   margin: 0;
@@ -249,6 +251,30 @@ button:hover {
   color: white;
 }
 
+.backButton{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-content: start;
+
+}
+.backButton a{
+  background-color: #f1c40f;
+  color: #2f2f2f;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 300ms;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.backButton a:hover{
+  background-color: #e67e22;
+  color: white;
+}
+
 /* ================== Tabela ================== */
 table {
   width: 100%;
@@ -276,20 +302,3 @@ section, #adm, #adicionar, #alterar, #lista {
   margin-top: 80px;
 }
 
-.backButton{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-content: start;
-
-}
-.backButton a{
-    background-color: #f1c40f;
-    color: #2f2f2f;
-    padding: 12px 25px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 20px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}

@@ -170,3 +170,10 @@ function gerarRelatorio(){
 
     document.getElementById('relatorio').classList.remove("hidden");
 }
+
+function deslogar(){
+    document.cookie = "auth=;expires=Thu, 01 Jan 1970 00:00:00 GMT"
+    setTimeout(() => {
+        window.location.href = "./index.html"
+    }, (500));
+}

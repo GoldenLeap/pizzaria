@@ -58,7 +58,7 @@ function cadastrarUsuario(usuarios, nome, usuario, email, senha) {
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
 }
 
-// Recupera a lista de usuários do localStorage
+// Pega a lista de usuários do localStorage
 function pegarListaUsuarios() {
     const lista = localStorage.getItem("usuarios");
     return lista ? JSON.parse(lista) : [];
@@ -99,7 +99,7 @@ function validarCadastro() {
         return;
     }
 
-    // Se tudo estiver ok, cadastra o usuário
+    // cadastra o usuário
     cadastrarUsuario(usuarios, nome, usuario, email, senha);
-    alert("Usuário cadastrado com sucesso!");
+    window.location.href = "./login.html"
 }
