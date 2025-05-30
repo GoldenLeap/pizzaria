@@ -1,10 +1,15 @@
-pizzas = []
+pizzas = [];
 pizzaAlterar = null;
+vendas = [];
 function mostrarSecao(secao){
+    secoes = ["adicionar", "alterar", "lista", "venda", "relatorio"]
     // Esconde todas as seções
-    document.getElementById("adicionar").classList.add("hidden")
-    document.getElementById("alterar").classList.add("hidden")
-    document.getElementById("lista").classList.add("hidden")
+
+    secoes.forEach(
+        s=>{
+            document.getElementById(s).classList.add("hidden");
+        }
+    )
     // Exibe seção selecionada
     document.getElementById(secao).classList.remove("hidden");
 
@@ -108,4 +113,60 @@ function atualizarLista(lista=pizzas){
         `;
         tabela.appendChild(linha);
     });
+}
+
+function registrarVenda(){
+    const sabor = document.getElementById("vendaSabor").value;
+    const preco = document.getElementById("vendaPreco").value.replace(",", ".");
+    const cliente = document.getElementById("vendaCliente").value;
+
+    if(isNaN(parseFloat(preco))){
+        alert("Insira um preço valido");
+        return
+    }
+    if(sabor && preco && cliente){
+        const listaVendas = document.getElementById('listaVendas');
+        const item = document.createElement('li');
+        item.textContent = `Sabor: ${sabor} Preço: ${parseFloat(preco).toFixed(2)} Cliente: ${cliente}`
+        listaVendas.appendChild(item);
+
+        vendas.push({sabor, preco, cliente})
+
+        document.getElementById('vendaSabor').value = ' '
+        document.getElementById('vendaPreco').value = ' '
+        document.getElementById('vendaCliente').value = ' '
+    }
+}
+
+function gerarRelatorio(){
+    const tabelaRelatorio = document.getElementById('tabelaRelatorio');
+    tabelaRelatorio.innerHTML = '';
+    if(vendas.length === 0){
+        alert("Nenhuma venda registrada");
+        return
+    }
+
+    let totalVendas = 0;
+    if (totalVendas.length === 0){
+        alert('Valor de vendas não registrado')
+        return
+    }
+    vendas.forEach( v=>{
+        const linha = document.createElement('tr');
+        linha.innerHTML= `
+        <td>${v.sabor}</td>
+        <td>R$${parseFloat(v.preco).toFixed(2)}</td>
+        <td>${v.cliente}</td>
+        `
+        tabelaRelatorio.appendChild(linha)
+
+        totalVendas += parseFloat(v.preco)
+    })
+    const linhaTotal = document.createElement('tr');
+    linhaTotal.innerHTML = `<td><strong>Total</strong></td>
+    <td><strong>R$${totalVendas.toFixed(2).toString().replace(".", ",")}</td>
+    <td></td>`
+    tabelaRelatorio.appendChild(linhaTotal);
+
+    document.getElementById('relatorio').classList.remove("hidden");
 }

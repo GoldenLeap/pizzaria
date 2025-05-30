@@ -56,6 +56,7 @@ function validarLogin() {
   }
   if(usuario === usuarioAdm && senha === senhaAdm){
     exibirMensagem("Login realizado com sucesso", "sucesso")
+    document.cookie = "auth=admin; SameSite=None; Secure"
     setTimeout(() => {
         window.location.href = "./admin.html";
     }, 1000);

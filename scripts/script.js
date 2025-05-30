@@ -5,7 +5,6 @@ window.onload = ()=>{
     }else{
         exibirSecao("#inicio")
     }
-
 }
 
 window.onhashchange = ()=>{

@@ -10,6 +10,7 @@
     <div class="backButton">
         <a class="voltar" href="index.html">Voltar a página inicial</a>
     </div>
+    <!-- Menu adm -->
      <div id="adm">
         <div id="menu">
           <button onclick="mostrarSecao('adicionar')">
@@ -21,7 +22,14 @@
           <button onclick="mostrarSecao('lista')">
             <em>Lista de pizzas</em>
           </button>
+          <button onclick="mostrarSecao('venda')">
+            <em>Registrar Vendas</em>
+          </button>
+          <button onclick="gerarRelatorio()">
+            <em>Relatorio Vendas</em>
+          </button>
         </div>
+
       </div>
 
       <!-- Adicionar Pizza -->
@@ -90,6 +98,45 @@
           <button onclick="alterarPizza()">Alterar pizza</button>
         </div>
       </div>
+
+      <!-- Registrar vendas -->
+       <div id="venda" class="hidden">
+          <h2>Venda de Pizzas</h2>
+          <div class="form">
+            <label for="vendaSabor">Sabor</label>
+            <input type="text" placeholder="Digite o sabor da pizza" id="vendaSabor">            
+          </div>
+          <div class="form">
+            <label for="vendaCliente">Cliente</label>
+            <input type="text" id="vendaCliente">
+          </div>
+          <div class="form">
+            <label for="vendaPreco">Preço pizza</label>
+            <input type="number" name="vendaPreco" id="vendaPreco">
+          </div>
+          <ul id="listaVendas">
+
+          </ul>
+          <button onclick="registrarVenda()">Registrar Venda</button>
+       </div>
+
+       <!-- Relatorio vendas -->
+        <div id="relatorio" class="hidden">
+          <h2>Relatório de Vendas</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Sabor</th>
+                <th>Preço</th>
+                <th>Comprador</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaRelatorio">
+
+            </tbody>
+          </table>
+
+        </div>
       <script src="./scripts/adm.js"></script>
 </body>
 </html>
