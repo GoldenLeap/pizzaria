@@ -2,19 +2,16 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Início</title>
-    <link rel="stylesheet" href=./styles/style.css />
-    <link rel="stylesheet" href=./styles/adm.css />
-    <link rel="stylesheet" href=./styles/style.css /> <link rel="stylesheet"
-    href=./styles/adm.css />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tralalero's Pizza - Início</title>
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
     <div class="container">
-      <!--Navegação-->
-      <div class="nav">
+      <!-- Navegação -->
+      <nav class="nav">
         <div class="logo">
-          <img style="display:inline !important;" src="./images/logo.png" />
+          <img src="./images/logo.png" alt="Logo Tralalero's Pizza" />
           <h1>Tralalero's Pizza</h1>
         </div>
         <ul>
@@ -22,55 +19,50 @@
           <li><a href="#cardapio">Cardápio</a></li>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#contato">Contato</a></li>
-          <li class="hidden" id="admin"><a href="./admin.html" >Adm</a></li>
+          <li class="hidden" id="admin"><a href="./admin.html">Adm</a></li>
           <li id="login"><a href="login.html">Entrar</a></li>
           <li id="cadastro"><a href="cadastro.html">Cadastrar-se</a></li>
           <li id="usuario" class="hidden"><p>Logado como: </p></li>
           <li id="deslogar" class="hidden"><a onclick="deslogar()">Deslogar</a></li>
         </ul>
-      </div>
+      </nav>
 
-      <!--Hero section-->
-      <div class="hero" id="inicio">
+      <!-- Hero Section -->
+      <section class="hero" id="inicio">
         <div class="card">
-          <img src="./images/pizza-banner.jfif" alt="Pizza" />
+          <img src="./images/pizza-banner.jfif" alt="Pizza Banner" />
           <div>
-            <h1>Titulo</h1>
+            <h1>Título</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi iste
-              beatae quod eius sapiente molestias neque necessitatibus earum?
-              Officia quisquam alias explicabo. Natus beatae iste ratione nam
-              enim. Itaque, quas!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi iste beatae quod eius sapiente molestias neque necessitatibus earum? Officia quisquam alias explicabo. Natus beatae iste ratione nam enim. Itaque, quas!
             </p>
             <a href="#cardapio" class="btn">Ver Cardápio</a>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- Cardápio -->
       <section id="cardapio" class="hidden">
         <h2>Nosso Cardápio</h2>
         <div class="menu-opcoes">
           <div class="item">
-            <img src="./images/pizzas/pizza1.jfif" alt="Pizza " />
+            <img src="./images/pizzas/pizza1.jfif" alt="Pizza Napolitana" />
             <h3>Pizza Napolitana</h3>
             <p>R$62,90</p>
           </div>
-
           <div class="item">
             <img src="./images/pizzas/pizza2.jfif" alt="Pizza Calabresa" />
             <h3>Pizza Calabresa</h3>
             <p>R$59,90</p>
           </div>
-
           <div class="item">
             <img src="./images/pizzas/pizza3.jfif" alt="Pizza Quatro Queijos" />
             <h3>Pizza Quatro Queijos</h3>
             <p>R$60,90</p>
           </div>
           <div class="item">
-            <img src="./images/pizzas/pizza4.jpg" alt="Pizza de Brocolis" />
-            <h3>Pizza de Brocolis</h3>
+            <img src="./images/pizzas/pizza4.jpg" alt="Pizza de Brócolis" />
+            <h3>Pizza de Brócolis</h3>
             <p>R$59,90</p>
           </div>
           <div class="item">
@@ -79,125 +71,33 @@
             <p>R$605,71</p>
           </div>
           <div class="item">
-            <img src="./images/pizzas/pizza6.jpeg" alt="Pizza de salmão defumado" />
+            <img src="./images/pizzas/pizza6.jpeg" alt="Pizza de Salmão Defumado" />
             <h3>Pizza de Salmão Defumado</h3>
             <p>R$60,90</p>
           </div>
         </div>
       </section>
 
-      <!-- Sobre a Pizzaria W.I.P-->
-      <div id="sobre" class="hidden">
+      <!-- Sobre -->
+      <section id="sobre" class="hidden">
         <h2>Sobre a Pizzaria</h2>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Necessitatibus, iure impedit, aliquam veniam nulla voluptates
-          voluptatem, consectetur eum dolor sit obcaecati pariatur fugiat nobis
-          molestias doloribus saepe deleniti aperiam commodi?
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, iure impedit, aliquam veniam nulla voluptates voluptatem, consectetur eum dolor sit obcaecati pariatur fugiat nobis molestias doloribus saepe deleniti aperiam commodi?
         </p>
-      </div>
+      </section>
 
-      <!-- Contato W.I.P -->
-      <div id="contato" class="hidden">
-        <h2>Fale conosco</h2>
+      <!-- Contato -->
+      <section id="contato" class="hidden">
+        <h2>Fale Conosco</h2>
         <p>Telefone: (19) 1234-5678</p>
-      </div>
+      </section>
 
-      <!-- Adm -->
-      <div id="adm" class="hidden">
-        <div id="menu">
-          <button onclick="mostrarSecao('adicionar')">
-            <em>Adicionar pizza</em>
-          </button>
-          <button onclick="mostrarSecao('alterar')">
-            <em >Alterar pizza</em>
-          </button>
-          <button onclick="mostrarSecao('lista')">
-            <em >Lista de pizzas</em>
-          </button>
-        </div>
-      </div>
-
-      <!-- Adicionar Pizza -->
-      <div id="adicionar" class="hidden">
-        <h2>Adicionar Pizza</h2>
-        <div class="form">
-          <label for="sabor">Sabor:</label>
-          <input type="text" id="sabor" />
-        </div>
-        <div class="form">
-          <label for="preco">Preço:</label>
-          <input type="text" id="preco" />
-        </div>
-        <div class="form">
-          <label for="ingredientes">Ingredientes:</label>
-          <input type="text" id="ingredientes" />
-        </div>
-
-        <button onclick="adicionarPizza()">Adicionar pizza</button>
-      </div>
-
-      <!-- Lista de Pizzas -->
-      <div id="lista" class="hidden">
-        <h2>Lista de pizzas</h2>
-        <input
-          type="text"
-          id="busca"
-          placeholder="Buscar por Sabor"
-          oninput="buscarPizza()"
-        />
-        <table>
-          <thead>
-            <tr>
-              <th>Sabor</th>
-              <th>Preço</th>
-              <th>Ingredientes</th>
-            </tr>
-          </thead>
-          <tbody id="listaPizzas"></tbody>
-        </table>
-      </div>
-
-      <!-- Alterar  Pizza -->
-      <div id="alterar" class="hidden">
-        <h2>Alterar Pizza</h2>
-        <input
-          type="text"
-          id="buscaAlterar"
-          placeholder="Buscar por Sabor"
-          oninput="buscarPizzaParaAlterar()"
-        />
-
-        <div class="alterarForm" id="alterarForm">
-          <div class="form">
-            <label for="novoSabor">Novo Sabor: </label>
-            <input placeholder="Digite o novo sabor" id="novoSabor" />
-          </div>
-          <div class="form">
-            <label for="novoPreco">Novo Preço: </label>
-            <input placeholder="Digite o novo preço" id="novoPreco" />
-          </div>
-          <div class="form">
-            <label for="novoIngrediente">Novo Ingrediente: </label>
-            <input placeholder="Digite o novo ingrediente" id="novoIngrediente" />
-          </div>
-          <button onclick="alterarPizza()">Alterar pizza</button>
-        </div>
-      </div>
-
-
-
-      <!-- Footer --> 
+      <!-- Footer -->
       <footer>
         <p>© 2025 - 2025 www.pizzaria.com</p>
       </footer>
     </div>
 
-    <!-- Scripts -->
-    <script src="./scripts/adm.js"></script>
-    <script src="./scripts/script.js"></script>
-    <!-- Scripts -->
-    <script src="./scripts/adm.js"></script>
     <script src="./scripts/script.js"></script>
   </body>
 </html>

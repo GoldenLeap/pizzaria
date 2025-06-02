@@ -29,21 +29,30 @@ function validarLogin() {
 
   // Tenta encontrar o usuário no localStorage
   const uObj = usuariosRegistrados.find((u) => u.usuario === usuario);
+  const eObj = usuariosRegistrados.find((u) => u.email === usuario);
 
-  // Caso usuário seja encontrado e senha correta
+  let usuarioAutenticado = null;
+
   if (uObj && uObj.senha === senha) {
-    exibirMensagem("Login realizado com sucesso", "sucesso");
-    document.cookie = `auth=${uObj.usuario} ;SameSite=None ;Secure; `
-    setTimeout(() => {
-      window.location.href = "./index.html"; // ou outro destino
-    }, 1000);
-    return; // impede execução do restante
+    usuarioAutenticado = uObj;
+  } else if (eObj && eObj.senha === senha) {
+    usuarioAutenticado = eObj;
   }
+
+  if (usuarioAutenticado) {
+    exibirMensagem("Login realizado com sucesso", "sucesso");
+    document.cookie = `auth=${usuarioAutenticado.usuario}; SameSite=None; Secure;`;
+    setTimeout(() => {
+      window.location.href = "./index.html";
+    }, 1000);
+    return;
+  }
+
 
   // Usuário e senha de teste 
   const usuarioTeste = "usuarioLegal";
   const senhaTeste = "senhaLegal";
-  
+
   // Usuario e senha adm(para testes)
   const usuarioAdm = "adm"
   const senhaAdm = "adm123"
@@ -55,14 +64,14 @@ function validarLogin() {
     }, 1000);
     return;
   }
-  if(usuario === usuarioAdm && senha === senhaAdm){
+  if (usuario === usuarioAdm && senha === senhaAdm) {
     exibirMensagem("Login realizado com sucesso", "sucesso")
     document.cookie = "auth=admin ;SameSite=None ;Secure"
     setTimeout(() => {
-        window.location.href = "./admin.html";
+      window.location.href = "./admin.html";
     }, 1000);
     return
-}
+  }
 
   // Se nenhuma das opções funcionou, exibe erro
   exibirMensagem("Usuário ou senha incorretos", "erro");
