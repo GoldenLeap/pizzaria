@@ -49,10 +49,8 @@ function adicionarPizza() {
 
 function buscarPizza(){
     const busca = document.getElementById("busca").value.toLowerCase();
-    console.log(busca)
     const resultados = pizzas.filter(pizza => pizza.sabor.toLowerCase().includes(busca));
 
-    console.log(resultados)
     atualizarLista(resultados)
 }
 

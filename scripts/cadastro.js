@@ -94,8 +94,9 @@ function validarCadastro() {
 
     // Verifica se usuário já existe
     const existeUsuario = usuarios.find(u => u.usuario === usuario);
-    if (existeUsuario) {
-        alert("Este nome de usuário já está em uso.");
+    const existeEmail = usuarios.find(u => u.email === email);
+    if (existeUsuario || existeEmail) {
+        alert("Este nome de usuário/email já está em uso.");
         return;
     }
 

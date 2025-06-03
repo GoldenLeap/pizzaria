@@ -32,11 +32,11 @@ function validarLogin() {
   const eObj = usuariosRegistrados.find((u) => u.email === usuario);
 
   let usuarioAutenticado = null;
-
-  if (uObj && uObj.senha === senha) {
+  if (uObj && uObj.senha == senha) {
     usuarioAutenticado = uObj;
-  } else if (eObj && eObj.senha === senha) {
+  } else if (eObj && eObj.senha == senha) {
     usuarioAutenticado = eObj;
+
   }
 
   if (usuarioAutenticado) {

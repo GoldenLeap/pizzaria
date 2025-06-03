@@ -1,7 +1,8 @@
 window.onload = ()=>{
     auth = getCookie("auth")
     if(auth.length > 1){
-        document.getElementById("usuario").innerHTML = `Logado como: ${auth[1]}`;
+        document.getElementById("usuario").classList.remove("hidden");
+        document.querySelector("#usuario p").innerHTML = `Logado como: ${auth[1]}`;
         usuarioLogado()
 
         if(auth[1] === "admin"){
@@ -55,4 +56,10 @@ function deleteAllCookies() {
         const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
         document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
     });
+}
+function deslogar(){
+    document.cookie = "auth=;expires=Thu, 01 Jan 1970 00:00:00 GMT"
+    setTimeout(() => {
+        window.location.href = "./index.html"
+    }, (500));
 }

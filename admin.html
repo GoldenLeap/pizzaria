@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Painel de Administrador</title>
   <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/adm.css" />
+  
 </head>
 <body>
   
   <header class="nav">
-    <div class="logo">
+    <div class="logo" onclick="window.location.href='index.html'">
       <img src="./images/logo.png" alt="Logo Tralalero's Pizza" />
       <h1>Tralalero's Pizza</h1>
     </div>
@@ -25,10 +27,10 @@
       <p style="color: #ccc;">Gerencie o cardápio, vendas e relatórios da Tralalero's Pizza</p>
 
       <nav id="menu" style="margin-top: 30px;">
-        <button onclick="mostrarSecao('adicionar')">🍕 <em>Adicionar pizza</em></button>
-        <button onclick="mostrarSecao('alterar')">✏️ <em>Alterar pizza</em></button>
-        <button onclick="mostrarSecao('lista')">📋 <em>Lista de pizzas</em></button>
-        <button onclick="mostrarSecao('venda')">💰 <em>Registrar Vendas</em></button>
+        <button onclick="mostrarSecao('adicionar'); window.location.hash='#adicionar'">🍕 <em>Adicionar pizza</em></button>
+        <button onclick="mostrarSecao('alterar'); window.location.hash='#alterar'">✏️ <em>Alterar pizza</em></button>
+        <button onclick="mostrarSecao('lista'); window.location.hash='#lista' ">📋 <em>Lista de pizzas</em></button>
+        <button onclick="mostrarSecao('venda'); window.location.hash='#venda' ">💰 <em>Registrar Vendas</em></button>
         <button onclick="gerarRelatorio()">📊 <em>Relatório Vendas</em></button>
       </nav>
     </section>
