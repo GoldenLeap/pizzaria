@@ -27,19 +27,19 @@
         </ul>
       </nav>
 
-      <!-- Hero Section -->
-      <section class="hero" id="inicio">
-        <div class="card">
-          <img src="./images/pizza-banner.jfif" alt="Pizza Banner" />
-          <div class="info">
-            <h1>Título</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi iste beatae quod eius sapiente molestias neque necessitatibus earum? Officia quisquam alias explicabo. Natus beatae iste ratione nam enim. Itaque, quas!
-            </p>
-            <a href="#cardapio" class="btn">Ver Cardápio</a>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+      <div class="card">
+        <img src="./images/pizza-banner.jfif" alt="Pizza Banner" />
+        <div class="info">
+          <h1>Uma fatia de felicidade</h1>
+          <p>
+            Sinta o sabor da verdadeira pizza artesanal! Na Tralalero's, cada fatia é feita com carinho, ingredientes selecionados e um toque especial de tradição italiana. Entre e descubra seu novo sabor favorito!
+          </p>
+          <a href="#cardapio" class="btn pulse">Ver Cardápio</a>
         </div>
-      </section>
+      </div>
+    </section>
 
     <!-- Cardápio -->
     <section id="cardapio">
@@ -79,20 +79,43 @@
     </section>
 
     <!-- Sobre -->
-    <section id="sobre">
-      <h2>Sobre a Pizzaria</h2>
-      <p>
-        A Tralalero's Pizza nasceu da paixão por massas bem feitas. Usamos ingredientes frescos, molhos artesanais e muita dedicação em cada pizza servida.
-      </p>
+    <section id="sobre" class="sobre">
+      <h2>Quem Somos</h2>
+      <div class="sobre-conteudo">
+        <img src="./images/equipe.webp" alt="Equipe preparando pizza" class="sobre-img" />
+        <div class="texto">
+          <p>
+            A <strong>Tralalero's Pizza</strong> nasceu da paixão por massas artesanais e sabores autênticos. Mais do que uma pizzaria, somos uma casa onde cada pizza é feita com dedicação, ingredientes frescos e um toque especial de amor italiano.
+          </p>
+          <p>
+            Desde a primeira fornada, buscamos proporcionar experiências inesquecíveis — seja em uma noite com amigos, um jantar em família ou aquele momento só seu. 
+            Aqui, cada fatia conta uma história!
+          </p>
+        </div>
+      </div>
     </section>
+
 
     <!-- Contato -->
     <section id="contato">
       <h2>Fale Conosco</h2>
-      <p>📞 Telefone: (19) 1234-5678</p>
-      <p>📧 Email: contato@tralalerospizza.com</p>
-      <a href="mailto:contato@tralalerospizza.com" class="btn pulse" aria-label="Envie um e-mail para contato">Enviar E-mail</a>
+      <div class="contato-grid">
+        <div class="info-contato">
+          <p><strong>📞 Telefone:</strong> <a href="tel:+551912345678">(19) 1234-5678</a></p>
+          <p><strong>📧 Email:</strong> <a href="mailto:contato@tralalerospizza.com">contato@tralalerospizza.com</a></p>
+          <p><strong>📍 Endereço:</strong> Rua das Pizzas, 123 – Centro, Limeira – SP</p>
+        </div>
+        <div class="form-contato">
+          <form action="#" method="post">
+            <input type="text" placeholder="Seu nome" required />
+            <input type="email" placeholder="Seu e-mail" required />
+            <textarea placeholder="Sua mensagem" required></textarea>
+            <button type="submit" class="btn pulse">Enviar Mensagem</button>
+          </form>
+        </div>
+      </div>
     </section>
+
 
     <!-- Footer -->
     <footer>

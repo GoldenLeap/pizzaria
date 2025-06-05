@@ -1,13 +1,22 @@
 /* ========== Área ADM ========== */
+
+body{
+  background-color: rgb(150, 150, 150, 0.6);
+  background-image: url("../images/bg.avif");
+  background-size: cover;
+  background-blend-mode: overlay;
+}
 #adm {
   max-width: 800px;
   margin: 40px auto 30px;
   padding: 30px;
   background-color: var(--color-bg-dark);
+
   text-align: center;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
+
 #adm #menu {
   display: flex;
   justify-content: center;
