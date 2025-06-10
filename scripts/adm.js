@@ -1,4 +1,4 @@
-pizzas = [];
+ pizzas = localStorage.getItem("pizzas") ? JSON.parse(localStorage.getItem("pizzas")) : []
 pizzaAlterar = null;
 vendas = [];
 function mostrarSecao(secao){
@@ -14,7 +14,11 @@ function mostrarSecao(secao){
     document.getElementById(secao).classList.remove("hidden");
 
 }
-function adicionarPizza() {
+async function adicionarPizza() {
+    // Recuperando as pizzas do localStorage
+    pizzas = JSON.parse(localStorage.getItem("pizzas")) || [];
+
+    // Capturando os dados do formulário
     const sabor = document.getElementById("sabor").value;
     const preco = parseFloat(document.getElementById("preco").value.replace(",", "."));
     const ingredientes = document.getElementById("ingredientes").value
@@ -22,29 +26,47 @@ function adicionarPizza() {
         .map(e => e.trim()) // Remove espaços extras de cada ingrediente
         .filter(e => e !== ''); // Remove elementos vazios
 
-    // Verifica se o preço é um valor numérico válido
+    // Verificando se foi selecionada uma imagem
+    const imagem = document.getElementById("imagem").files[0];
+    let imageData = '';
+    
+    // Se uma imagem foi selecionada, converte ela para base64, caso contrário usa o placeholder
+    if (imagem) {
+        imageData = await getBase64Img(imagem);
+    } else {
+        imageData = "./images/pizzas/placeholder.jpg"; // Placeholder
+    }
+
+    // Validação de preço
     if (isNaN(preco)) {
         alert("Insira um preço válido.");
         return;
     }
 
-    // Verifica se os campos foram preenchidos
+    // Validação dos campos do formulário
     if (sabor && preco && ingredientes.length > 0) {
-        alert(`Pizza de ${sabor} com preço R$${preco.toFixed(2)} cadastrada com sucesso.`);
-        alert(`Ingredientes: ${ingredientes.join(", ")}`); // Exibe ingredientes como uma lista formatada
-        pizzas.push({ sabor, preco, ingredientes });
-        
-        //W.I.P Guarda a lista no armazenamento local, para poder ser usado em outras páginas
+        // Adiciona a pizza à lista
+        pizzas.push({ sabor, preco, ingredientes, "imagem": imageData });
 
-        //
+        // Atualiza o localStorage com a nova lista de pizzas
+        localStorage.setItem("pizzas", JSON.stringify(pizzas));
+
+        // Limpa os campos do formulário
         document.getElementById("sabor").value = "";
         document.getElementById("preco").value = "";
         document.getElementById("ingredientes").value = "";
-        atualizarLista(); // Atualiza a lista de pizzas na página
+        document.getElementById("imagem").value = null;
+        console.log(pizzas)
+
+        // Atualiza a lista de pizzas exibida
+        atualizarLista();
+
+        alert(`Pizza de ${sabor} com preço R$${preco.toFixed(2)} cadastrada com sucesso.`);
     } else {
         alert("Por favor, preencha todos os campos.");
     }
 }
+
 
 
 function buscarPizza(){
@@ -60,46 +82,62 @@ function buscarPizzaParaAlterar(){
     pizzaAlterar = pizzas.find((pizza) => 
         pizza.sabor.toLowerCase().includes(busca)
     );
-
+    console.log(pizzaAlterar);
     if(pizzaAlterar){
         document.getElementById("novoSabor").value = pizzaAlterar.sabor;
         document.getElementById("novoPreco").value = pizzaAlterar.preco;
-        document.getElementById("novoIngrediente").value = pizzaAlterar.ingredientes
+        document.getElementById("novoIngrediente").value = pizzaAlterar.ingredientes;
+        document.getElementById("previewNovaPizza").src =pizzaAlterar["imagem"];
+        document.getElementById("previewNovaPizza").style.opacity = 100;
     } else {
         alert("Pizza não encontrada");
     }
 }
 
-
-function alterarPizza(){
-    if (pizzaAlterar){
+async function alterarPizza() {
+    if (pizzaAlterar) {
         const novoSabor = document.getElementById("novoSabor").value;
         const novoPreco = parseFloat(document.getElementById("novoPreco").value.replace(",", "."));
         const novoIngrediente = document.getElementById("novoIngrediente").value
-        .split(/[,;:]/) // Divide a string por qualquer vírgula, ponto e vírgula ou dois pontos
-        .map(e => e.trim()) // Remove espaços extras de cada ingrediente
-        .filter(e => e !== '');;
-        console.log(novoPreco   )
-        if(isNaN(novoPreco)){
-            alert("Informe um preço valido")
+            .split(/[,;:]/)
+            .map(e => e.trim())
+            .filter(e => e !== '');
+
+        const novaImagem = document.getElementById("novaImagem").files[0]
+
+        if (isNaN(novoPreco)) {
+            alert("Informe um preço válido");
             return;
         }
-        if(novoSabor && novoPreco && novoIngrediente){
-            pizzaAlterar.sabor = novoSabor
-            pizzaAlterar.preco = novoPreco
-            pizzaAlterar.ingredientes = novoIngrediente
 
+        if (novoSabor && novoPreco && novoIngrediente) {
+            pizzaAlterar.sabor = novoSabor;
+            pizzaAlterar.preco = novoPreco;
+            pizzaAlterar.ingredientes = novoIngrediente;
+
+            // Se uma nova imagem foi selecionada, converte ela para base64
+            if (novaImagem) {
+                pizzaAlterar.imagem = await getBase64Img(novaImagem);
+            }
+
+            // Atualiza o localStorage com a pizza alterada
+            let pizzas = JSON.parse(localStorage.getItem("pizzas")) || [];
+            const index = pizzas.findIndex(pizza => pizza.sabor === pizzaAlterar.sabor);
+            pizzas[index] = pizzaAlterar;  // Substitui a pizza alterada
+
+            localStorage.setItem("pizzas", JSON.stringify(pizzas));
+
+            alert("Pizza alterada com sucesso");
             atualizarLista();
-            alert("Pizza alterada com sucesso")
-            document.getElementById("alterarForm").classList.add("hidden");
-        }else{
-            alert("Por favor, preencha todos os campos")
+        } else {
+            alert("Por favor, preencha todos os campos.");
         }
     }
 }
 
 
 function atualizarLista(lista=pizzas){
+
     const tabela = document.getElementById("listaPizzas")
     tabela.innerHTML = "";
     lista.forEach(e => {
@@ -111,6 +149,8 @@ function atualizarLista(lista=pizzas){
         `;
         tabela.appendChild(linha);
     });
+    localStorage.setItem("pizzas", JSON.stringify(pizzas));
+    
 }
 
 function registrarVenda(){
@@ -174,4 +214,50 @@ function deslogar(){
     setTimeout(() => {
         window.location.href = "./index.html"
     }, (500));
+}
+
+function getBase64Img(imagem){
+    return new Promise((resolve, reject)=>{
+        const fileReader = new FileReader()
+        fileReader.onload = ()=>{
+            resolve(fileReader.result);
+        }
+        
+        fileReader.onerror = (error)=>{
+            reject(error);
+        }
+        if(imagem){
+            fileReader.readAsDataURL(imagem);
+        }
+    
+    }
+
+)
+    
+}
+function mudarImagem(){
+    document.getElementById("imagem").click()
+}
+
+function atualizarPreview() {
+    const preview = document.getElementById("preview");
+    const file = document.getElementById("imagem").files[0];
+    if (file) {
+        const image = URL.createObjectURL(file);
+        preview.src = image;
+        preview.onload = () => URL.revokeObjectURL(preview.src); // Libera o URL da imagem quando carregada
+    }else{
+        preview.src = "/images/pizzas/placeholder.jpg"
+    }
+}
+function atualizarNovoPreview() {
+    const preview = document.getElementById("previewNovaPizza");
+    const file = document.getElementById("novaImagem").files[0];
+    if (file) {
+        const image = URL.createObjectURL(file);
+        preview.src = image;
+        preview.onload = () => URL.revokeObjectURL(preview.src); // Libera o URL da imagem quando carregada
+    }else{
+        preview.src = "/images/pizzas/placeholder.jpg"
+    }
 }

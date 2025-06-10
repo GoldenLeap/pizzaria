@@ -9,7 +9,6 @@
   
 </head>
 <body>
-  
   <header class="nav">
     <div class="logo" onclick="window.location.href='index.html'">
       <img src="./images/logo.png" alt="Logo Tralalero's Pizza" />
@@ -50,6 +49,13 @@
       <div class="form">
         <label for="ingredientes">Ingredientes:</label>
         <input type="text" id="ingredientes" />
+      </div>
+      <div class="form">
+        <label for="imagem">Imagem da pizza (opcional):</label>
+        <div>
+          <img class="preview"src="images/pizzas/placeholder.jpg" id="preview" alt="imagemPizza" onclick="mudarImagem()">
+        </div>
+        <input id="imagem" type="file" accept=".jpg, .jpeg, .png, .webp, .jfif, .avif" onchange="atualizarPreview()"></input>
       </div>
       <button onclick="adicionarPizza()">Adicionar pizza</button>
     </section>
@@ -94,6 +100,11 @@
         <div class="form">
           <label for="novoIngrediente">Novo Ingrediente:</label>
           <input type="text" id="novoIngrediente" placeholder="Digite o novo ingrediente" />
+        </div>
+        <div class="form">
+          <label for="previewImagem">Nova imagem:</label>
+          <img class="preview"id="previewNovaPizza" src="images/pizzas/placeholder.jpg" style="opacity: 0;">
+          <input type="file" id="novaImagem" onchange="atualizarNovoPreview()"/>
         </div>
         <button onclick="alterarPizza()">Alterar pizza</button>
       </div>

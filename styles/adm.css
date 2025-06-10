@@ -1,4 +1,9 @@
 /* ========== Área ADM ========== */
+.preview{
+  width: 311px;
+  height: 180px;
+  object-fit: cover;
+}
 
 body{
   background-color: rgb(150, 150, 150, 0.6);
