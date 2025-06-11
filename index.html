@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tralalero's Pizza - Início</title>
-    <link rel="stylesheet" href="./styles/style.css" />
-  </head>
-  <body>
-    <img src="" id="testezin">
-    <div class="container">
-      <!-- Navegação -->
-      <nav class="nav">
-        <div class="logo" onclick="window.location.href='index.html'">
-          <img src="./images/logo.png" alt="Logo Tralalero's Pizza" />
-          <h1>Tralalero's Pizza</h1>
-        </div>
-        <ul>
-          <li><a href="#inicio">Início</a></li>
-          <li><a href="#cardapio">Cardápio</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#contato">Contato</a></li>
-          <li class="hidden" id="admin"><a href="./admin.html">Adm</a></li>
-          <li id="login"><a href="login.html">Entrar</a></li>
-          <li id="cadastro"><a href="cadastro.html">Cadastrar-se</a></li>
-          <li id="usuario" class="hidden"><p>Logado como: </p></li>
-          <li id="deslogar" class="hidden"><a onclick="deslogar()">Deslogar</a></li>
-        </ul>
-      </nav>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tralalero's Pizza - Início</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+</head>
+
+<body>
+  <img src="" id="testezin">
+  <div class="container">
+    <!-- Navegação -->
+    <nav class="nav">
+      <div class="logo" onclick="window.location.href='index.html'">
+        <img src="./images/logo.png" alt="Logo Tralalero's Pizza" />
+        <h1>Tralalero's Pizza</h1>
+      </div>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#cardapio">Cardápio</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li class="hidden" id="admin"><a href="./admin.html">Adm</a></li>
+        <li id="login"><a href="login.html">Entrar</a></li>
+        <li id="cadastro"><a href="cadastro.html">Cadastrar-se</a></li>
+        <li id="usuario" class="hidden">
+          <p>Logado como: </p>
+        </li>
+        <li id="deslogar" class="hidden"><a onclick="deslogar()">Deslogar</a></li>
+      </ul>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
@@ -35,7 +39,8 @@
         <div class="info">
           <h1>Uma fatia de felicidade</h1>
           <p>
-            Sinta o sabor da verdadeira pizza artesanal! Na Tralalero's, cada fatia é feita com carinho, ingredientes selecionados e um toque especial de tradição italiana. Entre e descubra seu novo sabor favorito!
+            Sinta o sabor da verdadeira pizza artesanal! Na Tralalero's, cada fatia é feita com carinho, ingredientes
+            selecionados e um toque especial de tradição italiana. Entre e descubra seu novo sabor favorito!
           </p>
           <a href="#cardapio" class="btn pulse">Ver Cardápio</a>
         </div>
@@ -45,7 +50,7 @@
     <!-- Cardápio -->
     <section id="cardapio">
       <h2>Nosso Cardápio</h2>
-      <div class="menu-opcoes">
+      <div class="menu-opcoes" id="menuCardapio">
         <div class="item">
           <img src="./images/pizzas/pizza1.jfif" alt="Pizza Napolitana" />
           <h3>Pizza Napolitana</h3>
@@ -86,10 +91,13 @@
         <img src="./images/equipe.webp" alt="Equipe preparando pizza" class="sobre-img" />
         <div class="texto">
           <p>
-            A <strong>Tralalero's Pizza</strong> nasceu da paixão por massas artesanais e sabores autênticos. Mais do que uma pizzaria, somos uma casa onde cada pizza é feita com dedicação, ingredientes frescos e um toque especial de amor italiano.
+            A <strong>Tralalero's Pizza</strong> nasceu da paixão por massas artesanais e sabores autênticos. Mais do
+            que uma pizzaria, somos uma casa onde cada pizza é feita com dedicação, ingredientes frescos e um toque
+            especial de amor italiano.
           </p>
           <p>
-            Desde a primeira fornada, buscamos proporcionar experiências inesquecíveis — seja em uma noite com amigos, um jantar em família ou aquele momento só seu. 
+            Desde a primeira fornada, buscamos proporcionar experiências inesquecíveis — seja em uma noite com amigos,
+            um jantar em família ou aquele momento só seu.
             Aqui, cada fatia conta uma história!
           </p>
         </div>
@@ -107,7 +115,7 @@
           <p><strong>📍 Endereço:</strong> Rua das Pizzas, 123 – Centro, Limeira – SP</p>
         </div>
         <div class="form-contato">
-          <form  onsubmit="return false;">
+          <form onsubmit="return false;">
             <input type="text" placeholder="Seu nome" required />
             <input type="email" placeholder="Seu e-mail" required />
             <textarea placeholder="Sua mensagem" required></textarea>
@@ -126,4 +134,5 @@
 
   <script src="./scripts/script.js"></script>
 </body>
+
 </html>

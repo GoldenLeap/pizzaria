@@ -1,16 +1,27 @@
 /* ========== Variáveis CSS ========== */
 :root {
-  --color-primary: #f1c40f;          /* Amarelo vibrante */
-  --color-primary-dark: #e67e22;     /* Laranja escuro */
-  --color-bg-dark: #444;             /* Cinza escuro */
-  --color-bg-darker: #333;           /* Tom mais escuro de cinza */
-  --color-text-light: #ffffff;       /* Branco suave */
-  --color-text-muted: #ddd;          /* Cinza claro */
-  --color-bg-card: rgba(19, 15, 15, 0.7); /* Fundo escuro com transparência */
-  --color-bg-item: #472929;          /* Tom quente e terroso */
-  --color-bg-table-header: #333;     /* Cor escura para cabeçalhos */
-  --color-bg-table-cell: #555;       /* Cor suave para células */
-  --color-bg-nav: #333;              /* Cor de fundo para a navbar */
+  --color-primary: #f1c40f;
+  /* Amarelo vibrante */
+  --color-primary-dark: #e67e22;
+  /* Laranja escuro */
+  --color-bg-dark: #444;
+  /* Cinza escuro */
+  --color-bg-darker: #333;
+  /* Tom mais escuro de cinza */
+  --color-text-light: #ffffff;
+  /* Branco suave */
+  --color-text-muted: #ddd;
+  /* Cinza claro */
+  --color-bg-card: rgba(19, 15, 15, 0.7);
+  /* Fundo escuro com transparência */
+  --color-bg-item: #472929;
+  /* Tom quente e terroso */
+  --color-bg-table-header: #333;
+  /* Cor escura para cabeçalhos */
+  --color-bg-table-cell: #555;
+  /* Cor suave para células */
+  --color-bg-nav: #333;
+  /* Cor de fundo para a navbar */
 }
 
 /* ========== Reset e Base ========== */
@@ -19,10 +30,12 @@
 *::after {
   box-sizing: border-box;
 }
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
 }
+
 body {
   background-image: url("../images/bg.avif");
   background-size: cover;
@@ -30,23 +43,25 @@ body {
   margin: 0;
   padding-top: 80px;
   padding-bottom: 60px;
-  background-color: var(--color-bg-darker);
   font-family: Arial, Helvetica, sans-serif;
   color: var(--color-text-light);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 a {
   color: var(--color-text-light);
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
+
 a:hover,
 a:focus {
   color: var(--color-primary);
   outline: none;
   cursor: pointer;
 }
+
 .hidden {
   display: none !important;
 }
@@ -82,6 +97,7 @@ a:focus {
   cursor: pointer;
   gap: 20px;
 }
+
 .logo img {
   width: 50px;
   height: 50px;
@@ -89,6 +105,7 @@ a:focus {
   object-fit: cover;
   box-shadow: 0 0 8px var(--color-primary);
 }
+
 .nav ul {
   display: flex;
   gap: 20px;
@@ -98,6 +115,7 @@ a:focus {
   margin: 0;
   padding: 0;
 }
+
 .nav li a,
 .nav li p {
   background-color: var(--color-bg-nav);
@@ -107,6 +125,7 @@ a:focus {
   border-radius: 10px;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
 .nav li a:hover,
 .nav li a:focus {
   background-color: var(--color-primary);
@@ -126,25 +145,29 @@ a:focus {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
+
 .card {
   background-color: var(--color-bg-card);
   max-width: 80%;
   height: 100%;
-  padding:20px;
-  
+  padding: 20px;
+
   border-radius: 12px;
   color: var(--color-text-light);
   box-shadow: 0 0 15px var(--color-primary);
 }
+
 .card h1 {
   margin-top: 0px;
   font-size: 2.75rem;
   color: var(--color-primary);
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
+
 .card p {
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
+
 .btn {
   display: inline-block;
   background-color: var(--color-primary);
@@ -156,6 +179,7 @@ a:focus {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   box-shadow: 0 0 10px var(--color-primary);
 }
+
 .btn:hover,
 .btn:focus {
   background-color: var(--color-primary-dark);
@@ -173,11 +197,13 @@ a:focus {
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
+
 .menu-opcoes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 24px;
 }
+
 .item {
   background-color: var(--color-bg-item);
   padding: 22px;
@@ -187,12 +213,14 @@ a:focus {
   transition: transform 300ms ease, box-shadow 300ms ease;
   cursor: pointer;
 }
+
 .item:hover,
 .item:focus {
   transform: scale(1.05);
   box-shadow: 0 6px 18px var(--color-primary);
   outline: none;
 }
+
 .item img {
   width: 100%;
   max-height: 180px;
@@ -200,6 +228,7 @@ a:focus {
   border-radius: 12px;
   transition: transform 300ms ease;
 }
+
 .item h3 {
   margin-top: 15px;
   font-size: 1.2rem;
@@ -207,6 +236,7 @@ a:focus {
   color: var(--color-primary);
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
 }
+
 .item p {
   margin-top: 8px;
   font-weight: 700;
@@ -223,6 +253,7 @@ a:focus {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   line-height: 1.6;
 }
+
 .sobre {
   padding: 3rem 1rem;
   background-color: #f9f9f9;
@@ -241,7 +272,7 @@ a:focus {
   flex: 1 1 300px;
   max-width: 400px;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .texto {
@@ -265,7 +296,8 @@ a:focus {
   flex: 1 1 300px;
 }
 
-form input, form textarea {
+form input,
+form textarea {
   width: 100%;
   padding: 0.8em;
   margin-bottom: 1em;
@@ -305,9 +337,11 @@ footer {
   align-items: center;
   gap: 10px;
 }
+
 #usuario.hidden {
   display: none !important;
 }
+
 #usuarioDiv {
   display: flex;
   align-items: center;
@@ -315,12 +349,14 @@ footer {
   border-radius: 5px;
   padding: 0 20px;
 }
+
 #usuarioDiv img {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
 }
+
 #usuarioDiv p {
   font-size: 14px;
   font-weight: 600;
@@ -333,44 +369,53 @@ footer {
   #usuarioDiv {
     gap: 8px;
   }
+
   #usuarioDiv img {
     width: 28px;
     height: 28px;
   }
+
   #usuarioDiv p {
     font-size: 12px;
   }
 }
+
 /* ========== ANIMAÇÕES PERSONALIZADAS ========== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 @keyframes zoomIn {
   from {
     transform: scale(0.95);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
   }
 }
+
 @keyframes pulse {
   0% {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(255, 99, 71, 0.7);
   }
+
   70% {
     transform: scale(1.05);
     box-shadow: 0 0 10px 10px rgba(255, 99, 71, 0);
   }
+
   100% {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(255, 99, 71, 0);
@@ -401,6 +446,7 @@ button,
 .backButton a {
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.15s;
 }
+
 button:active,
 .btn:active,
 .backButton a:active {

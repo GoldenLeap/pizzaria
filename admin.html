@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Painel de Administrador</title>
   <link rel="stylesheet" href="./styles/style.css" />
   <link rel="stylesheet" href="./styles/adm.css" />
-  
+
 </head>
+
 <body>
   <header class="nav">
     <div class="logo" onclick="window.location.href='index.html'">
@@ -26,9 +28,11 @@
       <p style="color: #ccc;">Gerencie o cardápio, vendas e relatórios da Tralalero's Pizza</p>
 
       <nav id="menu" style="margin-top: 30px;">
-        <button onclick="mostrarSecao('adicionar'); window.location.hash='#adicionar'">🍕 <em>Adicionar pizza</em></button>
+        <button onclick="mostrarSecao('adicionar'); window.location.hash='#adicionar'">🍕 <em>Adicionar
+            pizza</em></button>
         <button onclick="mostrarSecao('alterar'); window.location.hash='#alterar'">✏️ <em>Alterar pizza</em></button>
-        <button onclick="mostrarSecao('lista'); window.location.hash='#lista' ">📋 <em>Lista de pizzas</em></button>
+        <button onclick="mostrarSecao('lista'); atualizarLista(); window.location.hash='#lista' ">📋 <em>Lista de
+            pizzas</em></button>
         <button onclick="mostrarSecao('venda'); window.location.hash='#venda' ">💰 <em>Registrar Vendas</em></button>
         <button onclick="gerarRelatorio()">📊 <em>Relatório Vendas</em></button>
       </nav>
@@ -53,27 +57,26 @@
       <div class="form">
         <label for="imagem">Imagem da pizza (opcional):</label>
         <div>
-          <img class="preview"src="images/pizzas/placeholder.jpg" id="preview" alt="imagemPizza" onclick="mudarImagem()">
+          <img class="preview" src="images/pizzas/placeholder.jpg" id="preview" alt="imagemPizza"
+            onclick="mudarImagem()">
         </div>
-        <input id="imagem" type="file" accept=".jpg, .jpeg, .png, .webp, .jfif, .avif" onchange="atualizarPreview()"></input>
+        <input id="imagem" type="file" accept=".jpg, .jpeg, .png, .webp, .jfif, .avif"
+          onchange="atualizarPreview()"></input>
       </div>
       <button onclick="adicionarPizza()">Adicionar pizza</button>
     </section>
 
     <section id="lista" class="hidden">
       <h2>Lista de Pizzas</h2>
-      <input
-        type="text"
-        id="busca"
-        placeholder="Buscar por Sabor"
-        oninput="buscarPizza()"
-      />
+      <input type="text" id="busca" placeholder="Buscar por Sabor" oninput="buscarPizza()" />
       <table>
         <thead>
           <tr>
+            <th>ID</th>
             <th>Sabor</th>
             <th>Preço</th>
             <th>Ingredientes</th>
+            <th></th>
           </tr>
         </thead>
         <tbody id="listaPizzas"></tbody>
@@ -82,12 +85,7 @@
 
     <section id="alterar" class="hidden">
       <h2>Alterar Pizza</h2>
-      <input
-        type="text"
-        id="buscaAlterar"
-        placeholder="Buscar por Sabor"
-        oninput="buscarPizzaParaAlterar()"
-      />
+      <input type="text" id="buscaAlterar" placeholder="Buscar por Sabor" oninput="buscarPizzaParaAlterar()" />
       <div class="alterarForm" id="alterarForm">
         <div class="form">
           <label for="novoSabor">Novo Sabor:</label>
@@ -103,8 +101,8 @@
         </div>
         <div class="form">
           <label for="previewImagem">Nova imagem:</label>
-          <img class="preview"id="previewNovaPizza" src="images/pizzas/placeholder.jpg" style="opacity: 0;">
-          <input type="file" id="novaImagem" onchange="atualizarNovoPreview()"/>
+          <img class="preview" id="previewNovaPizza" src="images/pizzas/placeholder.jpg" style="opacity: 0;">
+          <input type="file" id="novaImagem" onchange="atualizarNovoPreview()" />
         </div>
         <button onclick="alterarPizza()">Alterar pizza</button>
       </div>
@@ -142,7 +140,8 @@
       </table>
     </section>
   </main>
-
+  <div id="toastContainer"></div>
   <script src="./scripts/adm.js"></script>
 </body>
+
 </html>

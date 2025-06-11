@@ -1,64 +1,85 @@
-/* ========== Área ADM ========== */
-.preview{
+/* ===================== */
+/* ========== GERAL ========== */
+body {
+  background-image: url("../images/bg.avif");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: "Segoe UI", sans-serif;
+  color: var(--color-text-light);
+  margin: 0;
+  padding: 0;
+}
+
+.preview {
   width: 311px;
   height: 180px;
   object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-body{
-  background-color: rgb(150, 150, 150, 0.6);
-  background-image: url("../images/bg.avif");
-  background-size: cover;
-  background-blend-mode: overlay;
-}
+/* ===================== */
+/* ========== ÁREA ADM ========== */
 #adm {
-  max-width: 800px;
+  max-width: 850px;
   margin: 40px auto 30px;
   padding: 30px;
   background-color: var(--color-bg-dark);
-
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
   text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+#adm h2,
+#adm p {
+  margin: 0;
+  padding: 0;
 }
 
 #adm #menu {
   display: flex;
-  justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
 }
+
 #adm #menu button {
   background-color: var(--color-primary);
   color: var(--color-bg-dark);
   padding: 15px 25px;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: bold;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
   box-shadow: 0 0 10px var(--color-primary);
+  transition: all 0.3s ease-in-out;
 }
+
 #adm #menu button:hover,
 #adm #menu button:focus {
   background-color: var(--color-primary-dark);
-  color: var(--color-text-light);
-  outline: none;
   box-shadow: 0 0 20px var(--color-primary-dark);
+  color: var(--color-text-light);
 }
 
-/* ========== Formulários ========== */
+/* ===================== */
+/* ========== FORMULÁRIOS ========== */
 #adicionar,
 #alterar,
-#lista {
-  max-width: 600px;
+#lista,
+#venda,
+#relatorio {
+  width: 700px;
   margin: 0 auto 40px;
   padding: 30px;
   background-color: var(--color-bg-dark);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  border-radius: 14px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
 }
+
 #adicionar h2,
 #alterar h2,
 #lista h2 {
@@ -66,39 +87,41 @@ body{
   margin-bottom: 20px;
   color: var(--color-primary);
 }
+
 .form {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  gap: 8px;
+  margin-bottom: 20px;
 }
+
 .form label {
   font-weight: 700;
-  margin-bottom: 5px;
   color: var(--color-text-light);
 }
+
 .form input {
   padding: 12px;
   border: none;
   border-radius: 8px;
-  background-color: #4b4b4b;
+  background-color: #444;
   color: var(--color-text-light);
   font-size: 1rem;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4);
 }
+
 .form input:focus {
   outline: none;
   background-color: #555;
   box-shadow: 0 0 8px var(--color-primary);
 }
+
 .form input::placeholder {
-  color: #ccc;
-}
-.alterarForm {
-  margin-top: 20px;
+  color: #bbb;
 }
 
-/* ========== Botões Genéricos ========== */
+/* ===================== */
+/* ========== BOTÕES GERAIS ========== */
 button,
 .backButton a {
   background-color: var(--color-primary);
@@ -108,78 +131,131 @@ button,
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   box-shadow: 0 0 10px var(--color-primary);
-}
-button:hover,
-button:focus,
-.backButton a:hover,
-.backButton a:focus {
-  background-color: var(--color-primary-dark);
-  color: var(--color-text-light);
-  outline: none;
-  box-shadow: 0 0 20px var(--color-primary-dark);
-}
-.backButton {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 15px;
-  width: 100%;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* ========== Tabela ========== */
+button:hover,
+.backButton a:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-light);
+  box-shadow: 0 0 20px var(--color-primary-dark);
+}
+
+/* ===================== */
+/* ========== TABELAS ========== */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
-th, td {
+
+th,
+td {
   padding: 14px;
-  border: 1px solid #444;
+  border: 1px solid #555;
   text-align: center;
 }
+
 th {
   background-color: var(--color-bg-table-header);
   color: var(--color-primary);
-  font-weight: 700;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
+
 td {
   background-color: var(--color-bg-table-cell);
   color: var(--color-text-light);
-  transition: background-color 0.3s ease;
 }
+
 td:hover {
   background-color: #6b4a4a;
 }
 
-/* ========== Sessões e Responsivo ========== */
-section,
-#adm,
-#adicionar,
-#alterar,
-#lista {
-  margin-top: 80px;
+/* ===================== */
+/* ========== TOAST (mensagem flutuante) ========== */
+
+.erro {
+  color: rgb(240, 146, 146);
+  text-shadow: 2px 0 #2f2f2f, -2px 0 #2f2f2f, 0 2px #2f2f2f, 0 -2px #2f2f2f,
+    1px 1px #2f2f2f, -1px -1px #2f2f2f, 1px -1px #2f2f2f, -1px 1px #2f2f2f;
+  font-size: 20px;
+  font-weight: bold;
 }
+
+.sucesso {
+  color: var(--color-primary);
+  font-weight: bold;
+
+}
+
+#toastContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.toast {
+  background-color: var(--color-bg-dark);
+  padding: 15px 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  margin-top: 12px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideIn 0.4s forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.toast .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: var(--color-primary);
+  animation: progressBar 3s linear forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progressBar {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+/* ===================== */
+/* ========== RESPONSIVO ========== */
 @media (max-width: 768px) {
-  .menu-opcoes {
-    grid-template-columns: 1fr;
-  }
-  .nav ul {
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-  .card {
-    max-width: 95%;
-    padding: 20px;
-  }
   #adm #menu {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
-  .item {
+
+  .form,
+  .preview {
     width: 100%;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th,
+  td {
+    padding: 10px;
   }
 }
