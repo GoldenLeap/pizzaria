@@ -2,7 +2,7 @@
 window.onload = () => {
     // Recupera o cookie de autenticação
     auth = getCookie("auth");
-
+    carregarPizzas()
     // Tenta pegar as pizzas salvas no localStorage como string
     pizzas = JSON.parse(localStorage.getItem("pizzas")) || [];
 
@@ -77,4 +77,29 @@ function deslogar() {
     setTimeout(() => {
         window.location.href = "./index.html";
     }, 500);
+}
+
+
+function carregarPizzas() {
+    let pizzas = pegarPizzas();
+    const containerPizzas = document.querySelector("#menuCardapio");
+
+    pizzas.forEach(p => {
+        const pizzaCont = document.createElement("div");
+        pizzaCont.classList.add("item");
+
+        const img = document.createElement("img");
+        img.src = p.imagem;
+
+        const nomePizza = document.createElement("h3");
+        nomePizza.innerText = p.sabor;
+
+        const precoPizza = document.createElement("p");
+        precoPizza.innerText = `R$${p.preco.toFixed(2).toString().replace(".", ",")}`;
+
+        pizzaCont.appendChild(img);
+        pizzaCont.appendChild(nomePizza);
+        pizzaCont.appendChild(precoPizza);
+        containerPizzas.appendChild(pizzaCont);
+    });
 }
