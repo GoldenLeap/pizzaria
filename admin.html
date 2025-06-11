@@ -58,7 +58,7 @@
         <label for="imagem">Imagem da pizza (opcional):</label>
         <div>
           <img class="preview" src="images/pizzas/placeholder.jpg" id="preview" alt="imagemPizza"
-            onclick="mudarImagem()">
+            onclick="mudarImagem('imagem')">
         </div>
         <input id="imagem" type="file" accept=".jpg, .jpeg, .png, .webp, .jfif, .avif"
           onchange="atualizarPreview()"></input>
@@ -101,8 +101,8 @@
         </div>
         <div class="form">
           <label for="previewImagem">Nova imagem:</label>
-          <img class="preview" id="previewNovaPizza" src="images/pizzas/placeholder.jpg" style="opacity: 0;">
-          <input type="file" id="novaImagem" onchange="atualizarNovoPreview()" />
+          <img class="preview" onclick="mudarImagem('novaImagem')" id="previewNovaPizza" src="images/pizzas/placeholder.jpg" style="opacity: 0;">
+          <input accept=".jpg, .jpeg, .png, .webp, .jfif, .avif" type="file" id="novaImagem" onchange="atualizarNovoPreview()" />
         </div>
         <button onclick="alterarPizza()">Alterar pizza</button>
       </div>

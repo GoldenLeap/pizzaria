@@ -2,40 +2,47 @@ const LIMITE_PIZZAS = 20;
 pizzaAlterar = null;
 vendas = [];
 
-window.onload = desativarForm
+// Executa ao carregar a página
+window.onload = desativarForm;
 
+// Desativa o formulário se o limite de pizzas for atingido
 function desativarForm() {
     if (pegarPizzas().length >= LIMITE_PIZZAS) {
         ["sabor", "preco", "ingredientes", "imagem"].forEach(e => {
             document.getElementById(e).disabled = true;
-        })
+        });
     }
 }
 
+// Remove pizza com base no ID
 function removerPizza(id) {
-    let pizzas = pegarPizzas()
-    let index = pizzas.findIndex(p => p.id === id)
+    let pizzas = pegarPizzas();
+    let index = pizzas.findIndex(p => p.id === id);
     if (index !== -1) {
         pizzas.splice(index, 1);
-        definirPizzas(pizzas)
-        atualizarLista()
+        definirPizzas(pizzas);
+        atualizarLista();
     } else {
-        console.log("aaa")
+        console.log("Pizza não encontrada");
     }
 }
 
+// Retorna array de pizzas do localStorage
 function pegarPizzas() {
     return JSON.parse(localStorage.getItem("pizzas")) || [];
 }
 
+// Retorna valor de input pelo ID
 function pegarValor(id) {
     return document.getElementById(id).value;
 }
 
+// Atualiza localStorage com pizzas
 function definirPizzas(pizzas) {
     localStorage.setItem("pizzas", JSON.stringify(pizzas));
 }
 
+// Limpa os campos do formulário de cadastro/edição
 function limparFormulario() {
     ["sabor", "preco", "ingredientes", "imagem", "novoSabor", "novoPreco", "novosIngredientes", "novaImagem"].forEach(id => {
         const e = document.getElementById(id);
@@ -46,98 +53,76 @@ function limparFormulario() {
                 e.value = "";
             }
         }
+    });
 
-    })
+    // Reseta preview da imagem
     let imagem = document.getElementById("preview") || document.getElementById("novoPreview");
     if (imagem) {
-        imagem.src = './images/pizzas/placeholder.jpg'
+        imagem.src = './images/pizzas/placeholder.jpg';
     }
 }
 
-
+// Controla qual seção do sistema está visível
 function mostrarSecao(secao) {
-    secoes = ["adicionar", "alterar", "lista", "venda", "relatorio"]
-    // Esconde todas as seções
-
-    secoes.forEach(
-        s => {
-            document.getElementById(s).classList.add("hidden");
-        }
-    )
-    // Exibe seção selecionada
+    secoes = ["adicionar", "alterar", "lista", "venda", "relatorio"];
+    secoes.forEach(s => document.getElementById(s).classList.add("hidden"));
     document.getElementById(secao).classList.remove("hidden");
-
 }
 
+// Adiciona nova pizza ao sistema
 async function adicionarPizza() {
-    // Recuperando as pizzas do localStorage
     let pizzas = pegarPizzas();
+    desativarForm();
 
-    desativarForm()
-
-    // Capturando os dados do formulário
     const sabor = pegarValor("sabor");
     const preco = parseFloat(pegarValor("preco").replace(",", "."));
     const ingredientes = pegarValor("ingredientes")
-        .split(/[,;:.]/) // Divide a string por qualquer vírgula, ponto e vírgula, dois pontos ou ponto
-        .map(e => e.trim()) // Remove espaços extras de cada ingrediente
-        .filter(e => e !== ''); // Remove elementos vazios
+        .split(/[,;:.]/)
+        .map(e => e.trim())
+        .filter(e => e !== '');
 
-    // Verificando se foi selecionada uma imagem
     const imagem = document.getElementById("imagem").files[0];
+    const imageData = imagem ? await reduzirImagem(imagem, 311, 180) : "./images/pizzas/placeholder.jpg";
 
-    // Se uma imagem foi selecionada, redimensiona e converte ela para base64, caso contrário usa o placeholder
-    const imageData = imagem ? await reduzirImagem(imagem, 311, 180) : "./images/pizzas/placeholder.jpg"
-
-    // Validação de preço
     if (isNaN(preco)) {
         exibirMensagem("Insira um preço válido", 500, "erro");
         return;
     }
 
-    // Validação dos campos do formulário
     if (sabor && preco && ingredientes.length > 0) {
-        // Adiciona a pizza à lista
-        pizzas.push({ "id": Date.now(), sabor, preco, ingredientes, "imagem": imageData });
-
-        // Atualiza o localStorage com a nova lista de pizzas
+        pizzas.push({ id: Date.now(), sabor, preco, ingredientes, imagem: imageData });
         localStorage.setItem("pizzas", JSON.stringify(pizzas));
-
-        // Limpa os campos do formulário
-
-
-        // Atualiza a lista de pizzas exibida
         atualizarLista();
-        exibirMensagem("Pizza adicionada com sucesso", 500, "sucesso")
+        exibirMensagem("Pizza adicionada com sucesso", 500, "sucesso");
         limparFormulario();
     }
-
 }
 
+// Busca pizzas por sabor
 function buscarPizza() {
     const busca = pegarValor("busca").toLowerCase();
     const resultados = pegarPizzas().filter(pizza => pizza.sabor.toLowerCase().includes(busca));
-
-    atualizarLista(resultados)
+    atualizarLista(resultados);
 }
 
+// Busca pizza para edição
 function buscarPizzaParaAlterar() {
+    const busca = pegarValor("buscaAlterar").toLowerCase();
+    pizzaAlterar = pegarPizzas().find(p => p.sabor.toLowerCase().includes(busca));
 
-    const busca = pegarValor(("buscaAlterar")).toLowerCase();
-    pizzaAlterar = pegarPizzas().find((pizza) => pizza.sabor.toLowerCase().includes(busca));
-    console.log(pizzaAlterar);
     if (pizzaAlterar) {
         document.getElementById("novoSabor").value = pizzaAlterar.sabor;
         document.getElementById("novoPreco").value = pizzaAlterar.preco;
         document.getElementById("novoIngrediente").value = pizzaAlterar.ingredientes;
-        document.getElementById("previewNovaPizza").src = pizzaAlterar["imagem"];
+        document.getElementById("previewNovaPizza").src = pizzaAlterar.imagem;
         document.getElementById("previewNovaPizza").style.opacity = 100;
     } else {
-        exibirMensagem("Pizza não encontrada", "erro")
-        limparFormulario()
+        exibirMensagem("Pizza não encontrada", "erro");
+        limparFormulario();
     }
 }
 
+// Altera pizza selecionada
 async function alterarPizza() {
     if (!pizzaAlterar) return;
 
@@ -147,6 +132,7 @@ async function alterarPizza() {
         .split(/[,;:.]/)
         .map(e => e.trim())
         .filter(e => e);
+
     const novaImagem = document.getElementById("novaImagem").files[0];
 
     if (!novoSabor || isNaN(novoPreco) || novoIngrediente.length === 0) {
@@ -161,6 +147,7 @@ async function alterarPizza() {
     pizzaAlterar.sabor = novoSabor;
     pizzaAlterar.preco = novoPreco;
     pizzaAlterar.ingredientes = novoIngrediente;
+
     if (novaImagem) {
         pizzaAlterar.imagem = await reduzirImagem(novaImagem, 500, 500);
     }
@@ -171,54 +158,57 @@ async function alterarPizza() {
     exibirMensagem("Pizza alterada com sucesso.");
 }
 
-
-
+// Atualiza lista de pizzas exibida na interface
 function atualizarLista(lista = pegarPizzas()) {
-    let pizzas = pegarPizzas()
-    const tabela = document.getElementById("listaPizzas")
+    let pizzas = pegarPizzas();
+    const tabela = document.getElementById("listaPizzas");
     tabela.innerHTML = "";
+
     lista.forEach(e => {
         const linha = document.createElement("tr");
         linha.innerHTML = `
-        <td>${e.id}</td>
-        <td>${e.sabor}</td>
-        <td>R$${parseFloat(e.preco.toFixed(2))}</td>
-        <td>${e.ingredientes}</td>
-        <td><button onclick="removerPizza(${e.id})" class="remover">🗑️ Remover</button></td>
+            <td>${e.id}</td>
+            <td>${e.sabor}</td>
+            <td>R$${parseFloat(e.preco.toFixed(2))}</td>
+            <td>${e.ingredientes}</td>
+            <td><button onclick="removerPizza(${e.id})" class="remover">🗑️ Remover</button></td>
         `;
         tabela.appendChild(linha);
     });
-    definirPizzas(pizzas)
 
+    definirPizzas(pizzas);
 }
 
+// Registra uma venda no sistema
 function registrarVenda() {
     const sabor = pegarValor("vendaSabor");
     const preco = pegarValor("vendaPreco").replace(",", ".");
     const cliente = pegarValor("vendaCliente");
 
     if (isNaN(parseFloat(preco))) {
-        exibirMensagem("Insira um preço valido", "erro");
-        return
+        exibirMensagem("Insira um preço válido", "erro");
+        return;
     }
 
     if (sabor && preco && cliente) {
-        const listaVendas = document.getElementById('listaVendas');
-        const item = document.createElement('li');
-        item.textContent = `Sabor: ${sabor} Preço: ${parseFloat(preco).toFixed(2)} Cliente: ${cliente}`
+        const listaVendas = document.getElementById("listaVendas");
+        const item = document.createElement("li");
+        item.textContent = `Sabor: ${sabor} Preço: ${parseFloat(preco).toFixed(2)} Cliente: ${cliente}`;
         listaVendas.appendChild(item);
 
-        vendas.push({ sabor, preco, cliente })
+        vendas.push({ sabor, preco, cliente });
 
-        document.getElementById('vendaSabor').value = ' '
-        document.getElementById('vendaPreco').value = ' '
-        document.getElementById('vendaCliente').value = ' '
+        document.getElementById("vendaSabor").value = "";
+        document.getElementById("vendaPreco").value = "";
+        document.getElementById("vendaCliente").value = "";
     }
 }
 
+// Gera relatório com total de vendas
 function gerarRelatorio() {
     const tabela = document.getElementById("tabelaRelatorio");
     tabela.innerHTML = '';
+
     if (vendas.length === 0) {
         exibirMensagem("Nenhuma venda registrada.", "erro");
         return;
@@ -238,13 +228,15 @@ function gerarRelatorio() {
     document.getElementById("relatorio").classList.remove("hidden");
 }
 
+// Função para logout simulando expiração do cookie
 function deslogar() {
-    document.cookie = "auth=;expires=Thu, 01 Jan 1970 00:00:00 GMT"
+    document.cookie = "auth=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     setTimeout(() => {
-        window.location.href = "./index.html"
-    }, (500));
+        window.location.href = "./index.html";
+    }, 500);
 }
 
+// Reduz e converte imagem para base64
 function reduzirImagem(imagem, maxLargura, maxAltura) {
     return new Promise((resolve, reject) => {
         const img = new Image();
@@ -258,7 +250,6 @@ function reduzirImagem(imagem, maxLargura, maxAltura) {
             const canvas = document.createElement("canvas");
             const ctx = canvas.getContext("2d");
 
-            // Calcula a proporção para manter a relação da imagem
             const proporcao = Math.min(maxLargura / img.width, maxAltura / img.height);
             const largura = img.width * proporcao;
             const altura = img.height * proporcao;
@@ -267,22 +258,18 @@ function reduzirImagem(imagem, maxLargura, maxAltura) {
             canvas.height = altura;
             ctx.drawImage(img, 0, 0, largura, altura);
 
-            // Converte para base64 após redimensionar
             const resizedBase64 = canvas.toDataURL(imagem.type);
             resolve(resizedBase64);
         };
 
-        reader.onerror = (error) => {
-            reject(error);
-        };
-
+        reader.onerror = (error) => reject(error);
         reader.readAsDataURL(imagem);
     });
 }
 
-
-function mudarImagem() {
-    document.getElementById("imagem").click()
+// Atalhos para abrir e atualizar imagem
+function mudarImagem(img) {
+    document.getElementById(img).click();
 }
 
 function atualizarPreview() {
@@ -295,7 +282,6 @@ function atualizarPreview() {
     }
 }
 
-
 function atualizarNovoPreview() {
     const file = document.getElementById("novaImagem").files[0];
     const preview = document.getElementById("previewNovaPizza");
@@ -306,32 +292,30 @@ function atualizarNovoPreview() {
     }
 }
 
-
+// Mostra mensagens temporárias com animação (toast)
 function exibirMensagem(mensagem, duracao = 500, estado = "sucesso") {
     if (typeof duracao === "string" && estado === undefined) {
         estado = duracao;
         duracao = 500;
     }
+
     const container = document.getElementById("toastContainer");
 
     const toast = document.createElement("div");
     toast.className = `toast ${estado}`;
     toast.innerHTML = `
-    ${mensagem}
-    <div class="progress"></div>
-  `;
+        ${mensagem}
+        <div class="progress"></div>
+    `;
 
     container.appendChild(toast);
 
-    // Define duração da barra de progresso
     const progress = toast.querySelector(".progress");
     progress.style.animationDuration = `${duracao}ms`;
 
-    // Remove toast após a duração
     setTimeout(() => {
         toast.style.opacity = "0";
         toast.style.transform = "translateY(20px)";
         setTimeout(() => toast.remove(), 500);
     }, duracao);
 }
-
